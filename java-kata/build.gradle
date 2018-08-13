@@ -2,10 +2,10 @@ apply plugin: 'java'
 
 jar {
     baseName = 'bank-account-kata-java'
+    version = '1.0.0'
 }
 
 dependencies {
-    compileOnly libs.lombok
 
     testCompile libs.test.junit,
             libs.test.assertj,

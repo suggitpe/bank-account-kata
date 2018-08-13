@@ -5,6 +5,8 @@ allprojects{ projects ->
 subprojects { subprojects ->
 
     apply from: "$rootDir/libraries.gradle"
+
+    group = "org.acmebank.katas.bankaccount"
     
     repositories {
         jcenter()
