@@ -4,13 +4,15 @@ import lombok.EqualsAndHashCode;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.time.LocalDateTime.now;
 import static org.suggs.katas.bankaccount.Money.anAmountOf;
 
-@EqualsAndHashCode
 public class Account {
     private Money balance;
+    private List<Transaction> transactions = new ArrayList<>();
 
     public static Account anAccountWith(final Money amount) {
         return new Account(amount);
