@@ -8,7 +8,7 @@ import static org.suggs.katas.bankaccount.Money.anAmountOf;
 public class Account {
     private Money balance;
 
-    public static Account anAccountWith(Money amount) {
+    public static Account anAccountWith(final Money amount) {
         return new Account(amount);
     }
 
@@ -16,7 +16,7 @@ public class Account {
         return new Account(anAmountOf(0.0d));
     }
 
-    private Account(Money anAmount) {
+    private Account(final Money anAmount) {
         this.balance = anAmount;
     }
 
@@ -25,10 +25,13 @@ public class Account {
     }
 
     public void withdraw(final Money anAmount) {
+        if(balance.isLessThan(anAmount)){
+            throw new IllegalStateException("You cannot withdraw more than the balance");
+        }
         balance.less(anAmount);
     }
 
-    public void transfer(Money money, Account destinationAccount) {
+    public void transferTo(final Account destinationAccount, final Money money) {
         destinationAccount.deposit(money);
         this.withdraw(money);
     }

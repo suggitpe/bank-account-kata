@@ -21,4 +21,8 @@ public class Money {
     public void less(final Money anAmount) {
         amount = this.amount - anAmount.amount;
     }
+
+    public boolean isLessThan(Money anAmount) {
+        return amount < anAmount.amount;
+    }
 }
