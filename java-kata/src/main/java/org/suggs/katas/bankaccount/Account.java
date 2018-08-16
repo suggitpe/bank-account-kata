@@ -2,6 +2,10 @@ package org.suggs.katas.bankaccount;
 
 import lombok.EqualsAndHashCode;
 
+import java.io.PrintStream;
+import java.time.LocalDateTime;
+
+import static java.time.LocalDateTime.now;
 import static org.suggs.katas.bankaccount.Money.anAmountOf;
 
 @EqualsAndHashCode
@@ -34,5 +38,13 @@ public class Account {
     public void transferTo(final Account destinationAccount, final Money money) {
         destinationAccount.deposit(money);
         this.withdraw(money);
+    }
+
+    public void printStatementTo(PrintStream printStream) {
+        printStream.println("------------------");
+        printStream.println("| date | balance |");
+        printStream.println("------------------");
+        printStream.println("| " + now() + " | " + balance.toString() + " |");
+        printStream.println("------------------");
     }
 }
