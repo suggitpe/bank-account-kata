@@ -23,6 +23,10 @@ public class Account {
         this.balance = anAmount;
     }
 
+    public boolean hasTheSameBalanceAs(Account anotherAccount) {
+        return this.balance.isTheSameAs(anotherAccount.balance);
+    }
+
     public void deposit(final Money anAmount) {
         balance = balance.add(anAmount);
     }

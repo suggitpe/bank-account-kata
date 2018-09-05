@@ -27,17 +27,23 @@ public class WithAnAccountWeCan {
     PrintStream printStream;
 
     @Test
+    public void compareTwoAccountsHaveTheSameBalance(){
+        Account account = anAccountWith(anAmountOf(10.0d));
+        assertThat(account.hasTheSameBalanceAs(anAccountWith(anAmountOf(10.0d)))).isTrue();
+    }
+
+    @Test
     public void depositAnAmountToIncreaseTheBalance() {
         Account account = anEmptyAccount();
         account.deposit(anAmountOf(10.0d));
-        assertThat(account).isEqualTo(anAccountWith(anAmountOf(10.0d)));
+        assertThat(account.hasTheSameBalanceAs(anAccountWith(anAmountOf(10.0d)))).isTrue();
     }
 
     @Test
     public void withdrawAnAmountToDecreaseTheBalance() {
         Account account = anAccountWith(anAmountOf(20.0d));
         account.withdraw(anAmountOf(10.0d));
-        assertThat(account).isEqualTo(anAccountWith(anAmountOf(10.0d)));
+        assertThat(account.hasTheSameBalanceAs(anAccountWith(anAmountOf(10.0d)))).isTrue();
     }
 
     @Test(expected = IllegalStateException.class)
@@ -53,8 +59,8 @@ public class WithAnAccountWeCan {
 
         sourceAccount.transferTo(destinationAccount, anAmountOf(20.0d));
 
-        assertThat(sourceAccount).isEqualTo(anAccountWith(anAmountOf(30.0d)));
-        assertThat(destinationAccount).isEqualTo(anAccountWith(anAmountOf(20.0d)));
+        assertThat(sourceAccount.hasTheSameBalanceAs(anAccountWith(anAmountOf(30.0d)))).isTrue();
+        assertThat(destinationAccount.hasTheSameBalanceAs(anAccountWith(anAmountOf(20.0d)))).isTrue();
     }
 
     @Test(expected = IllegalStateException.class)
