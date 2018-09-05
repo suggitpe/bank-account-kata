@@ -2,8 +2,11 @@ package org.suggs.katas.bankaccount;
 
 import java.util.Objects;
 
-public class Money {
-    private double amount;
+/**
+ * Immutable class
+ */
+public final class Money {
+    private final double amount;
 
     private Money(final double anAmount) {
         this.amount = anAmount;
@@ -13,12 +16,12 @@ public class Money {
         return new Money(anAmount);
     }
 
-    public void add(final Money anAmount) {
-        amount = this.amount + anAmount.amount;
+    public Money add(final Money anAmount) {
+        return anAmountOf(this.amount + anAmount.amount);
     }
 
-    public void less(final Money anAmount) {
-        amount = this.amount - anAmount.amount;
+    public Money less(final Money anAmount) {
+        return anAmountOf(this.amount - anAmount.amount);
     }
 
     public boolean isLessThan(Money anAmount) {
@@ -36,5 +39,12 @@ public class Money {
     @Override
     public int hashCode() {
         return Objects.hash(amount);
+    }
+
+    @Override
+    public String toString() {
+        return "Money{" +
+                "amount=" + amount +
+                '}';
     }
 }
