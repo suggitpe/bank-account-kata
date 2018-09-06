@@ -26,8 +26,8 @@ public class WithMoneyWeCan {
 
     @Test
     public void compareIfTwoAmountsAreTheSame() {
-        assertThat(anAmountOf(12.0d).isTheSameAs(anAmountOf(13.0d))).isFalse();
-        assertThat(anAmountOf(12.0d).isTheSameAs(anAmountOf(12.0d))).isTrue();
-        assertThat(anAmountOf(12.0d).isTheSameAs(anAmountOf(11.0d))).isFalse();
+        assertThat(anAmountOf(12.0d).equals(anAmountOf(13.0d))).isFalse();
+        assertThat(anAmountOf(12.0d).equals(anAmountOf(12.0d))).isTrue();
+        assertThat(anAmountOf(12.0d).equals(anAmountOf(11.0d))).isFalse();
     }
 }

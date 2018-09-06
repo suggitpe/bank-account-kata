@@ -1,6 +1,7 @@
 package org.suggs.katas.bankaccount;
 
 import java.io.PrintStream;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -10,6 +11,7 @@ import static org.suggs.katas.bankaccount.Money.anAmountOf;
 
 public class Account {
     private Money balance;
+    private List<Transaction> transactions = new ArrayList<>();
 
     public static Account anAccountWith(final Money amount) {
         return new Account(amount);
@@ -20,11 +22,12 @@ public class Account {
     }
 
     private Account(final Money anAmount) {
+        transactions.add(Transaction.anOpeningBalanceOf(anAmount, LocalDateTime.now()));
         this.balance = anAmount;
     }
 
     public boolean hasTheSameBalanceAs(Account anotherAccount) {
-        return this.balance.isTheSameAs(anotherAccount.balance);
+        return this.balance.equals(anotherAccount.balance);
     }
 
     public void deposit(final Money anAmount) {

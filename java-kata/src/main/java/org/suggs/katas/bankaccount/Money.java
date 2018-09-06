@@ -28,9 +28,6 @@ public final class Money {
         return amount < anAmount.amount;
     }
 
-    public boolean isTheSameAs(Money anAmount) {
-        return amount == anAmount.amount;
-    }
 
     @Override
     public boolean equals(Object o) {
