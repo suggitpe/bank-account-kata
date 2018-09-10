@@ -1,24 +1,27 @@
 package org.suggs.katas.bankaccount;
 
-import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static java.time.LocalDateTime.now;
 import static org.suggs.katas.bankaccount.Money.anAmountOf;
 import static org.suggs.katas.bankaccount.Transaction.*;
 
+/**
+ * In effect this class is a transaction wrapper.
+ */
 public class Account {
-    private List<Transaction> transactions = new ArrayList<>();
 
-    public static Account anAccountWith(final Money amount) {
-        return new Account(amount);
-    }
+    private StatementWriter statementWriter;
+    private final List<Transaction> transactions = new ArrayList<>();
 
     public static Account anEmptyAccount() {
         return new Account(anAmountOf(0.0d));
+    }
+
+    public static Account anAccountWith(final Money amount) {
+        return new Account(amount);
     }
 
     private Account(final Money anAmount) {
@@ -45,12 +48,16 @@ public class Account {
         this.withdraw(money);
     }
 
-    public void printStatementTo(PrintStream printStream) {
-        printStream.println("------------------");
-        printStream.println("| date | balance |");
-        printStream.println("------------------");
-        printStream.println("| " + now() + " | " + balance().toString() + " |");
-        printStream.println("------------------");
+    public void printBalanceStatement() {
+        statementWriter.printBalanceOf(balance());
+    }
+
+    public void printFullStatement() {
+        statementWriter.printFullStatementWith(transactions);
+    }
+
+    public void setStatementWriter(StatementWriter statementWriter) {
+        this.statementWriter = statementWriter;
     }
 
     @Override

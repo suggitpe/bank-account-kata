@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 import static org.suggs.katas.bankaccount.Direction.CREDIT;
 import static org.suggs.katas.bankaccount.Direction.DEBIT;
 
+/**
+ * POJO class only.
+ */
 public class Transaction {
 
     private final Money amount;
@@ -30,12 +33,25 @@ public class Transaction {
         this.date = date;
     }
 
+    public Money getAmount() {
+        return amount;
+    }
+
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
     public Money balanceImpact() {
         if (direction == DEBIT)
             return amount.negative();
         else
             return amount;
     }
+
 }
 
 enum Direction {

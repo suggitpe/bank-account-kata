@@ -29,6 +29,14 @@ public final class Money implements Comparable<Money> {
         return amount < anAmount.amount;
     }
 
+    public Money negative() {
+        return anAmountOf(amount * -1);
+    }
+
+    @Override
+    public int compareTo(Money otherAmount) {
+        return Double.valueOf(amount).compareTo(Double.valueOf(otherAmount.amount));
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -48,14 +56,5 @@ public final class Money implements Comparable<Money> {
         return "Money{" +
                 "amount=" + amount +
                 '}';
-    }
-
-    public Money negative() {
-        return anAmountOf(amount * -1);
-    }
-
-    @Override
-    public int compareTo(Money otherAmount) {
-        return Double.valueOf(amount).compareTo(Double.valueOf(otherAmount.amount));
     }
 }
