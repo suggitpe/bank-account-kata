@@ -1,6 +1,5 @@
 ext {
     libs = [
-            lombok   : 'org.projectlombok:lombok:1.18.2',
             scalalang: 'org.scala-lang:scala-library:2.12.4',
             test     : [
                     junit    : 'junit:junit:4.12',

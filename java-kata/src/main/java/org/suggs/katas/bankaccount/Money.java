@@ -5,7 +5,8 @@ import java.util.Objects;
 /**
  * Immutable class
  */
-public final class Money {
+public final class Money implements Comparable<Money> {
+
     private final double amount;
 
     private Money(final double anAmount) {
@@ -47,5 +48,14 @@ public final class Money {
         return "Money{" +
                 "amount=" + amount +
                 '}';
+    }
+
+    public Money negative() {
+        return anAmountOf(amount * -1);
+    }
+
+    @Override
+    public int compareTo(Money otherAmount) {
+        return Double.valueOf(amount).compareTo(Double.valueOf(otherAmount.amount));
     }
 }

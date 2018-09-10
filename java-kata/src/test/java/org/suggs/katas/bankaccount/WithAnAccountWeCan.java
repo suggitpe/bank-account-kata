@@ -21,7 +21,7 @@ import static org.suggs.katas.bankaccount.Money.anAmountOf;
  - I can apply Statement filters (just deposits, withdrawal, date)
  */
 @RunWith(MockitoJUnitRunner.class)
-public class WithAnAccountWeCan {
+public class WithAnAccountWeCan{
 
     @Mock
     PrintStream printStream;
@@ -29,21 +29,21 @@ public class WithAnAccountWeCan {
     @Test
     public void compareTwoAccountsHaveTheSameBalance(){
         Account account = anAccountWith(anAmountOf(10.0d));
-        assertThat(account.hasTheSameBalanceAs(anAccountWith(anAmountOf(10.0d)))).isTrue();
+        assertThat(account).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
     }
 
     @Test
     public void depositAnAmountToIncreaseTheBalance() {
         Account account = anEmptyAccount();
         account.deposit(anAmountOf(10.0d));
-        assertThat(account.hasTheSameBalanceAs(anAccountWith(anAmountOf(10.0d)))).isTrue();
+        assertThat(account).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
     }
 
     @Test
     public void withdrawAnAmountToDecreaseTheBalance() {
         Account account = anAccountWith(anAmountOf(20.0d));
         account.withdraw(anAmountOf(10.0d));
-        assertThat(account.hasTheSameBalanceAs(anAccountWith(anAmountOf(10.0d)))).isTrue();
+        assertThat(account).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
     }
 
     @Test(expected = IllegalStateException.class)
@@ -59,14 +59,25 @@ public class WithAnAccountWeCan {
 
         sourceAccount.transferTo(destinationAccount, anAmountOf(20.0d));
 
-        assertThat(sourceAccount.hasTheSameBalanceAs(anAccountWith(anAmountOf(30.0d)))).isTrue();
-        assertThat(destinationAccount.hasTheSameBalanceAs(anAccountWith(anAmountOf(20.0d)))).isTrue();
+        assertThat(sourceAccount).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(30.0d)));
+        assertThat(destinationAccount).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(20.0d)));
     }
 
     @Test(expected = IllegalStateException.class)
     public void throwsExceptionIfYouTryToTransferMoreThantheBalance(){
         Account sourceAccount = anAccountWith(anAmountOf(20.0d));
         sourceAccount.transferTo(anEmptyAccount(), anAmountOf(30.0d));
+    }
+
+    @Test
+    public void hasTheRightBalanceAfterANumberOfTransactions(){
+        Account account = anEmptyAccount();
+        account.deposit(anAmountOf(10.0d));
+        account.deposit(anAmountOf(80.0d));
+        account.deposit(anAmountOf(5.0d));
+        account.withdraw(anAmountOf(15.0d));
+        account.withdraw(anAmountOf(10.0d));
+        assertThat(account).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(70.0d)));
     }
 
     @Test

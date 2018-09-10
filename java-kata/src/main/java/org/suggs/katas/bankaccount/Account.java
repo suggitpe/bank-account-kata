@@ -8,9 +8,9 @@ import java.util.Objects;
 
 import static java.time.LocalDateTime.now;
 import static org.suggs.katas.bankaccount.Money.anAmountOf;
+import static org.suggs.katas.bankaccount.Transaction.*;
 
 public class Account {
-    private Money balance;
     private List<Transaction> transactions = new ArrayList<>();
 
     public static Account anAccountWith(final Money amount) {
@@ -22,23 +22,22 @@ public class Account {
     }
 
     private Account(final Money anAmount) {
-        transactions.add(Transaction.anOpeningBalanceOf(anAmount, LocalDateTime.now()));
-        this.balance = anAmount;
+        transactions.add(anOpeningBalanceOf(anAmount, LocalDateTime.now()));
     }
 
-    public boolean hasTheSameBalanceAs(Account anotherAccount) {
-        return this.balance.equals(anotherAccount.balance);
+    protected Money balance() {
+        return transactions.stream().map(transaction -> transaction.balanceImpact()).reduce(Money::add).get();
     }
 
     public void deposit(final Money anAmount) {
-        balance = balance.add(anAmount);
+        transactions.add(aDepositOf(anAmount, LocalDateTime.now()));
     }
 
     public void withdraw(final Money anAmount) {
-        if (balance.isLessThan(anAmount)) {
+        if (balance().isLessThan(anAmount)) {
             throw new IllegalStateException("You cannot withdraw more than the balance");
         }
-        balance = balance.less(anAmount);
+        transactions.add(aWithDrawlOf(anAmount, LocalDateTime.now()));
     }
 
     public void transferTo(final Account destinationAccount, final Money money) {
@@ -50,7 +49,7 @@ public class Account {
         printStream.println("------------------");
         printStream.println("| date | balance |");
         printStream.println("------------------");
-        printStream.println("| " + now() + " | " + balance.toString() + " |");
+        printStream.println("| " + now() + " | " + balance().toString() + " |");
         printStream.println("------------------");
     }
 
@@ -59,18 +58,18 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return Objects.equals(balance, account.balance);
+        return Objects.equals(transactions, account.transactions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(balance);
+        return Objects.hash(transactions);
     }
 
     @Override
     public String toString() {
         return "Account{" +
-                "balance=" + balance +
+                "balance=" + balance() +
                 '}';
     }
 }
