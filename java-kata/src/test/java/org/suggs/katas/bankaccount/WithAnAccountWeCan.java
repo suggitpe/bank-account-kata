@@ -3,15 +3,14 @@ package org.suggs.katas.bankaccount;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
 import static org.suggs.katas.bankaccount.Account.anAccountWith;
 import static org.suggs.katas.bankaccount.Account.anEmptyAccount;
+import static org.suggs.katas.bankaccount.AccountBalanceComparator.ofBalances;
 import static org.suggs.katas.bankaccount.Money.anAmountOf;
 
 /*
@@ -28,21 +27,21 @@ public class WithAnAccountWeCan {
     @Test
     public void compareTwoAccountsHaveTheSameBalance() {
         Account account = anAccountWith(anAmountOf(10.0d));
-        assertThat(account).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
+        assertThat(account).usingComparator(ofBalances()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
     }
 
     @Test
     public void depositAnAmountToIncreaseTheBalance() {
         Account account = anEmptyAccount();
         account.deposit(anAmountOf(10.0d));
-        assertThat(account).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
+        assertThat(account).usingComparator(ofBalances()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
     }
 
     @Test
     public void withdrawAnAmountToDecreaseTheBalance() {
         Account account = anAccountWith(anAmountOf(20.0d));
         account.withdraw(anAmountOf(10.0d));
-        assertThat(account).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
+        assertThat(account).usingComparator(ofBalances()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
     }
 
     @Test(expected = IllegalStateException.class)
@@ -58,8 +57,8 @@ public class WithAnAccountWeCan {
 
         sourceAccount.transferTo(destinationAccount, anAmountOf(20.0d));
 
-        assertThat(sourceAccount).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(30.0d)));
-        assertThat(destinationAccount).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(20.0d)));
+        assertThat(sourceAccount).usingComparator(ofBalances()).isEqualTo(anAccountWith(anAmountOf(30.0d)));
+        assertThat(destinationAccount).usingComparator(ofBalances()).isEqualTo(anAccountWith(anAmountOf(20.0d)));
     }
 
     @Test(expected = IllegalStateException.class)
@@ -76,7 +75,7 @@ public class WithAnAccountWeCan {
         account.deposit(anAmountOf(5.0d));
         account.withdraw(anAmountOf(15.0d));
         account.withdraw(anAmountOf(10.0d));
-        assertThat(account).usingComparator(new AccountBalanceComparator()).isEqualTo(anAccountWith(anAmountOf(70.0d)));
+        assertThat(account).usingComparator(ofBalances()).isEqualTo(anAccountWith(anAmountOf(70.0d)));
     }
 
     @Test
