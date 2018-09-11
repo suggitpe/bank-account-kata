@@ -8,5 +8,6 @@ public class WithAnAccountWeCan {
 
     @Test
     public void depositAnAmountToIncreaseTheBalance() {
+        assertThat("no implementation you need to write the test first").isEqualTo("an implemented test");
     }
 }
