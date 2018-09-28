@@ -1,4 +1,4 @@
 package org.acmebank.katas.bankaccount
 
-class Money(ammount: Double) {
+data class Money(val amount: Double) {
 }
