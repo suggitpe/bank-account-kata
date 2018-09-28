@@ -6,7 +6,7 @@ jar {
 }
 
 dependencies {
-    compile libs.scalalang
+    compile libs.scala
 
     testCompile libs.test.scalatest
 }
