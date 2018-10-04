@@ -5,10 +5,16 @@ jar {
     version = '1.0.0'
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
 
-    testCompile libs.test.junit,
+    testImplementation libs.test.junitApi,
             libs.test.assertj,
             libs.test.mockito
+
+    testRuntimeOnly libs.test.junitEngine
 
 }

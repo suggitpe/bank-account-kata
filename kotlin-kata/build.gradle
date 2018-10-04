@@ -5,9 +5,15 @@ jar {
     version = '1.0.0'
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     compile libs.kotlin
 
-    testCompile libs.test.junit,
+    testImplementation libs.test.junitApi,
             libs.test.assertj
+
+    testRuntimeOnly libs.test.junitEngine
 }

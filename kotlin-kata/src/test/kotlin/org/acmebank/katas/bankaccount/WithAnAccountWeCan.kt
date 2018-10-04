@@ -1,12 +1,12 @@
 package org.acmebank.katas.bankaccount
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.Test
+import org.junit.jupiter.api.Test
 
 class WithAnAccountWeCan {
 
     @Test
-    fun depositAnAmountToIncreaseTheBalance(){
+    fun depositAnAmountToIncreaseTheBalance() {
         assertThat("no implementation you need to write the test first").isEqualTo("an implemented test")
     }
 }
