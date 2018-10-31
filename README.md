@@ -2,15 +2,16 @@
 
 ----
 ## Overview
-This session will be fun.  That's the primary objective, have fun and code ... that's it!  In this session we will talk 
+This session will be fun.  That's the primary objective.  Have fun and code ... that's it!  In this session we will talk 
 for a little bit about why XP practices are important and then we can write some code practicing two of the most 
 fundamental ones.  The code will be super easy, this is not about writing complicated code ... quite the opposite.  We 
-will get pairs of you to build really simply test driven code. It will make you rethink how you write code from now 
-on.  For those of you after more of a challenge, we have included some optional Object Oriented (calisthenics) rules to apply.
+will get pairs of you to build really simple, test driven code. It will make you rethink how you write code from now 
+on.  For those of you after more of a challenge, we have included some optional Object Oriented (calisthenics) rules to 
+apply.
 
 Come in pairs or make new friends on the day.  Please all __bring your own laptop__ (we dont have any to share) with 
 your favourite IDE installed (we will have prepared using IntelliJ and trust that Eclipse will work).  You can use 
-whatever language you like, we have prepared Scala and Java modules here.
+whatever language you like, we have prepared Scala, Kotlin and Java modules here.
     
 Two key things to learn / practice in this Kata:
 
@@ -46,13 +47,26 @@ please feel free to install Gradle locally:
 
 ### Test Driven Development
 
-Test driven development is based on the principles of test-first development (where you write the test first) but goes an extra step to actually driving the code using the IDE. The basic cycle follows the __<span style="color: red;">Red</span> -> <span style="color: green;">Green</span> -> <span style="color: blue;">Refactor</span>__ model:
+Test driven development is based on the principles of test-first development (where you write the test first) but goes 
+an extra step to actually driving the code using the IDE. The basic cycle follows the 
+__<span style="color: red;">Red</span> -> <span style="color: green;">Green</span> -> <span style="color: blue;">Refactor</span>__ model:
 
- - __Red__: write a failing test. Write a test that describes (think documentation) what the function you are writing actually does. Likely this will not even compile (this is fine, not compiling IS a failing test).
- - __Green__: now write enough of an implementation to make the test pass. You should write the simplest code possible to make the code pass and resist the urge to write more than is actually needed. Consider the [YAGNI](https://martinfowler.com/bliki/Yagni.html) principle.
- - __Refactor__: now we re-read the code and make sure that this is good enough to push to the _world at large_. You should ask yourself at this point how the next person that reads this code will experience it.
+ - __Red__: write a failing test. Write a test that describes (think documentation) what the function you are writing 
+ actually does. Likely this will not even compile (this is fine, not compiling IS a failing test).
+ - __Green__: now write enough of an implementation to make the test pass. You should write the simplest code possible 
+ to make the code pass and resist the urge to write more than is actually needed. Consider the 
+ [YAGNI](https://martinfowler.com/bliki/Yagni.html) principle.
+ - __Refactor__: now we re-read the code and make sure that this is good enough to push to the _world at large_. You 
+ should ask yourself at this point how the next person that reads this code will experience it.  
+ >>Think of yourself in  one years time at 3am on a Sunday morning fixing bug reading the code ... how would you wish 
+ that code to have been written? 
 
-As a walkthrough consider applying TDD as a two stage process, the first phase writes the API in the test __as it should be__ (write the code you would like someone else to have written for you). In this case the compiler _IS_ the failing test, you rewrite it until you are happy and then to make it go green you use the IDE to create the classes and methods as per the test (dont type them, let the IDE do the work). The next phase of the cycle implements the methods to get the unit tests passing, followed by the refactoring to complete the RGR cycle described above. The key message here is that you should consider the compiler failing as a failing test to allow you to get it green (alt+enter until it all compiles).
+As a walk-through consider applying TDD as a two stage process, the first phase writes the API in the test __as it should 
+be__ (write the code you would like someone else to have written for you). In this case the compiler _IS_ the failing 
+test, you rewrite it until you are happy and then to make it go green you use the IDE to create the classes and methods 
+as per the test (dont type them, let the IDE do the work). The next phase of the cycle implements the methods to get the 
+unit tests passing, followed by the refactoring to complete the RGR cycle described above. The key message here is that 
+you should consider the compiler failing as a failing test to allow you to get it green (alt+enter until it all compiles).
 
 
 ### Pair programming
