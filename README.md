@@ -80,6 +80,7 @@ unit tests passing, followed by the refactoring to complete the RGR cycle descri
 you should consider the compiler failing as a failing test to allow you to get it green (alt+enter until it all compiles).
 
 
+
 ### Pair programming
 There are many different ways to do pair programming, the most common model is the Driver-Navigator model.  For this kata, 
 try and follow as below for simplicity.  There are two roles in this model (you should switch often to keep it interesting):
