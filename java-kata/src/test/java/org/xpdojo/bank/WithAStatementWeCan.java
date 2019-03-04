@@ -1,9 +1,8 @@
 package org.xpdojo.bank;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.PrintStream;
 import java.time.LocalDateTime;
@@ -13,22 +12,25 @@ import java.util.List;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.suggs.katas.bankaccount.Money.anAmountOf;
+import static org.mockito.MockitoAnnotations.initMocks;
 import static org.xpdojo.bank.Money.anAmountOf;
 import static org.xpdojo.bank.Transaction.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class WithAStatementWeCan {
 
-    @Mock
-    PrintStream printStream;
+    @Mock PrintStream printStream;
+
+    @BeforeEach
+    public void setUpMocks() {
+        initMocks(this);
+    }
 
     @Test
     public void printAStatementBalance() {
         StatementWriter statement = new StatementWriter();
         statement.setPrintStream(printStream);
         statement.printBalanceOf(anAmountOf(10.d));
-        Mockito.verify(printStream, times(5)).println(anyString());
+        verify(printStream, times(5)).println(anyString());
     }
 
     @Test

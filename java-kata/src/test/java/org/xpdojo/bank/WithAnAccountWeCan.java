@@ -1,18 +1,28 @@
 package org.xpdojo.bank;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock
+import org.mockito.Mock;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyListOf;
+import static org.mockito.Mockito.verify;
+import static org.mockito.MockitoAnnotations.initMocks;
 import static org.xpdojo.bank.Account.anAccountWith;
 import static org.xpdojo.bank.Account.anEmptyAccount;
 import static org.xpdojo.bank.AccountBalanceComparator.ofBalances;
 import static org.xpdojo.bank.Money.anAmountOf;
 
-@RunWith(MockitoJUnitRunner.class)
 public class WithAnAccountWeCan {
 
     @Mock StatementWriter statementWriter;
+
+    @BeforeEach
+    public void setUpMocks() {
+        initMocks(this);
+    }
 
     @Test
     public void compareTwoAccountsHaveTheSameBalance() {
@@ -34,10 +44,10 @@ public class WithAnAccountWeCan {
         assertThat(account).usingComparator(ofBalances()).isEqualTo(anAccountWith(anAmountOf(10.0d)));
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void throwsExceptionIfYouTryToWithdrawMoreThanTheBalance() {
         Account account = anAccountWith(anAmountOf(20.0d));
-        account.withdraw(anAmountOf(30.0d));
+        assertThrows(IllegalStateException.class, () -> account.withdraw(anAmountOf(30.0d)));
     }
 
     @Test
@@ -51,10 +61,10 @@ public class WithAnAccountWeCan {
         assertThat(destinationAccount).usingComparator(ofBalances()).isEqualTo(anAccountWith(anAmountOf(20.0d)));
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void throwsExceptionIfYouTryToTransferMoreThantheBalance() {
         Account sourceAccount = anAccountWith(anAmountOf(20.0d));
-        sourceAccount.transferTo(anEmptyAccount(), anAmountOf(30.0d));
+        assertThrows(IllegalStateException.class, () -> sourceAccount.transferTo(anEmptyAccount(), anAmountOf(30.0d)));
     }
 
     @Test
