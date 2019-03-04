@@ -1,4 +1,4 @@
-# Bank account kata
+# Driving out a Bank Account with TDD
 
 ----
 ## Overview
@@ -24,22 +24,22 @@ Implement the following user requirements in a TDD fashion. Work in pairs and re
 information below before starting.
 
 Clone the repository with the following command.
-`git clone https://github.com/tobyweston/bank-account-kata`
+`git clone https://github.com/xp-dojo/tdd-bank-account-java`
 
 If you have problems with SSL, you can try the following.
-`git clone -c http.sslVerify=false https://github.com/tobyweston/bank-account-kata`
+`git clone -c http.sslVerify=false https://github.com/xp-dojo/tdd-bank-account-java`
 
-If you have problems with a proxy, you can unset http_proxy and unset https_proxy (or equivilant for your OS).
-Open the project from IntelliJ IDEA (community edition is fine). The project files are committed and there are no external dependancies. There are also Eclipse project files but these are untested. Your millage may vary.
+If you have problems with a proxy, you can unset http_proxy and unset https_proxy (or equivalent for your OS).
+Open the project from IntelliJ IDEA (community edition is fine). The project files are committed and there are no external dependencies. There are also Eclipse project files but these are untested. Your millage may vary.
 Implement the following user requirements in a TDD fashion. Work in pairs and read the guidelines and background information below before starting.
 
 ### User Requirements
  - I can *Deposit* money into accounts
  - I can *Withdraw* money from accounts
  - I can *Transfer* amounts between accounts (if I have the funds)
- - I can print out an Account balance (date, amount, balance) 
+ - I can print out an Account balance slip (date, time, balance) 
  - I can print a statement of account activity (statement) 
- - I can apply Statement filters (just deposits, withdrawal, date)
+ - I can apply Statement filters (include just deposits, withdrawal, date)
 
 ----
 ## Importing into your IDE
