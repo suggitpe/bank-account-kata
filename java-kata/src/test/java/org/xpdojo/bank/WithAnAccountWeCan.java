@@ -1,4 +1,4 @@
-package org.acmebank.katas.bankaccount;
+package org.xpdojo.bank;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package org.acmebank.katas.bankaccount;
+package org.xpdojo.bank;
 
 /**
  * Immutable class to represent Money as a concept.
