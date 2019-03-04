@@ -1,4 +1,4 @@
-package org.suggs.katas.bankaccount;
+package org.xpdojo.bank;
 
 import java.util.Comparator;
 

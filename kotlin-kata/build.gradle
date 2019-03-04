@@ -1,7 +1,7 @@
-apply plugin: 'java'
+apply plugin: 'kotlin'
 
 jar {
-    baseName = 'bank-account-kata-java'
+    baseName = 'bank-account-kata-kotlin'
     version = '1.0.0'
 }
 
@@ -10,11 +10,11 @@ test {
 }
 
 dependencies {
+    compile libs.kotlin,
+            libs.kotlinReflect
 
     testImplementation libs.test.junitApi,
-            libs.test.assertj,
-            libs.test.mockito
+            libs.test.assertj
 
     testRuntimeOnly libs.test.junitEngine
-
 }

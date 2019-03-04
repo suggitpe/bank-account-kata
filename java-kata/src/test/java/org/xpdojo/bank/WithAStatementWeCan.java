@@ -1,6 +1,6 @@
-package org.suggs.katas.bankaccount;
+package org.xpdojo.bank;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -14,7 +14,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.suggs.katas.bankaccount.Money.anAmountOf;
-import static org.suggs.katas.bankaccount.Transaction.*;
+import static org.xpdojo.bank.Money.anAmountOf;
+import static org.xpdojo.bank.Transaction.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class WithAStatementWeCan {
@@ -27,7 +28,7 @@ public class WithAStatementWeCan {
         StatementWriter statement = new StatementWriter();
         statement.setPrintStream(printStream);
         statement.printBalanceOf(anAmountOf(10.d));
-        verify(printStream, times(5)).println(anyString());
+        Mockito.verify(printStream, times(5)).println(anyString());
     }
 
     @Test

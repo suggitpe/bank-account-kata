@@ -1,16 +1,13 @@
-package org.suggs.katas.bankaccount;
+package org.xpdojo.bank;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static org.suggs.katas.bankaccount.Money.anAmountOf;
-import static org.suggs.katas.bankaccount.Transaction.*;
+import static org.xpdojo.bank.Money.anAmountOf;
+import static org.xpdojo.bank.Transaction.*;
 
-/**
- * In effect this class is a transaction wrapper.
- */
 public class Account {
 
     private StatementWriter statementWriter;

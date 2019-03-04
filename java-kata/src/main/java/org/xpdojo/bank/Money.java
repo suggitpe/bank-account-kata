@@ -1,12 +1,12 @@
-package org.suggs.katas.bankaccount;
+package org.xpdojo.bank;
 
 import java.util.Objects;
 
 /**
- * Immutable class
+ * Immutable class to represent Money as a concept.
+ * This class should have no accessor methods.
  */
-public final class Money implements Comparable<Money> {
-
+public class Money implements Comparable<Money> {
     private final double amount;
 
     private Money(final double anAmount) {

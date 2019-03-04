@@ -1,9 +1,9 @@
-package org.suggs.katas.bankaccount;
+package org.xpdojo.bank;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.suggs.katas.bankaccount.Money.anAmountOf;
+import static org.xpdojo.bank.Money.anAmountOf;
 
 public class WithMoneyWeCan {
 

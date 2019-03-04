@@ -1,10 +1,10 @@
-package org.suggs.katas.bankaccount;
+package org.xpdojo.bank;
 
 import java.io.PrintStream;
 import java.util.List;
 
 import static java.time.LocalDateTime.now;
-import static org.suggs.katas.bankaccount.Money.anAmountOf;
+import static org.xpdojo.bank.Money.anAmountOf;
 
 public class StatementWriter {
 

@@ -1,11 +1,27 @@
-allprojects{ projects ->
+allprojects { projects ->
+
     defaultTasks 'clean', 'build'
+
+    buildscript {
+        ext {
+            kotlinVersion = '1.2.10'
+        }
+        repositories {
+            jcenter()
+        }
+        dependencies {
+            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+        }
+    }
+
 }
 
 subprojects { subprojects ->
 
     apply from: "$rootDir/dependencies.gradle"
-    
+
+    group = "org.acmebank.katas.bankaccount"
+
     repositories {
         jcenter()
     }

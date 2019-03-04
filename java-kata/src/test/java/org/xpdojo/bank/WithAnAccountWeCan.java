@@ -1,28 +1,18 @@
-package org.suggs.katas.bankaccount;
+package org.xpdojo.bank;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.verify;
-import static org.suggs.katas.bankaccount.Account.anAccountWith;
-import static org.suggs.katas.bankaccount.Account.anEmptyAccount;
-import static org.suggs.katas.bankaccount.AccountBalanceComparator.ofBalances;
-import static org.suggs.katas.bankaccount.Money.anAmountOf;
+import static org.xpdojo.bank.Account.anAccountWith;
+import static org.xpdojo.bank.Account.anEmptyAccount;
+import static org.xpdojo.bank.AccountBalanceComparator.ofBalances;
+import static org.xpdojo.bank.Money.anAmountOf;
 
-/*
- - I can print out an Account balance (date, amount, balance)
- - I can print a statementWriter of account activity (statementWriter)
- - I can apply StatementWriter filters (just deposits, withdrawal, date)
- */
 @RunWith(MockitoJUnitRunner.class)
 public class WithAnAccountWeCan {
 
-    @Mock
-    StatementWriter statementWriter;
+    @Mock StatementWriter statementWriter;
 
     @Test
     public void compareTwoAccountsHaveTheSameBalance() {

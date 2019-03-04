@@ -2,10 +2,11 @@ apply plugin: 'scala'
 
 jar {
     baseName = 'bank-account-kata-scala'
+    version = '1.0.0'
 }
 
 dependencies {
-    compile libs.scalalang
+    implementation libs.scala
 
-    testCompile libs.test.scalatest
+    testImplementation libs.test.scalatest
 }

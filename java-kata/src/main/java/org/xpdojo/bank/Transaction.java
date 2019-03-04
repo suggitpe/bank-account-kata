@@ -1,9 +1,9 @@
-package org.suggs.katas.bankaccount;
+package org.xpdojo.bank;
 
 import java.time.LocalDateTime;
 
-import static org.suggs.katas.bankaccount.Direction.CREDIT;
-import static org.suggs.katas.bankaccount.Direction.DEBIT;
+import static org.xpdojo.bank.Direction.CREDIT;
+import static org.xpdojo.bank.Direction.DEBIT;
 
 /**
  * POJO class only.
