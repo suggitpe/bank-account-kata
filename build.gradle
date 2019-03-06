@@ -5,15 +5,19 @@ allprojects { projects ->
     buildscript {
         ext {
             kotlinVersion = '1.2.10'
+            nodeVersion = '1.2.0'
         }
         repositories {
             jcenter()
+            maven {
+                url "https://plugins.gradle.org/m2/"
+            }
         }
         dependencies {
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+            classpath "com.moowork.gradle:gradle-node-plugin:${nodeVersion}"
         }
     }
-
 }
 
 subprojects { subprojects ->

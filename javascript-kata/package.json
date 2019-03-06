@@ -1,0 +1,9 @@
+{
+  "name": "javascript-kata",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "24.1.0"
+  }
+}
