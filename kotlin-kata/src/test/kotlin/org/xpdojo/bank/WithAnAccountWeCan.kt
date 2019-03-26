@@ -1,12 +1,13 @@
 package org.xpdojo.bank
 
-import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 class WithAnAccountWeCan {
 
     @Test
+    @Disabled
     fun `deposit an amount to increase the balance`() {
-        assertThat("no implementation you need to write the test first").isEqualTo("an implemented test")
+        TODO("Implement a failing test that once implemented you think will pass")
     }
 }
