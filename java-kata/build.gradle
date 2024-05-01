@@ -1,8 +1,8 @@
 apply plugin: 'java'
 
 jar {
-    baseName = 'bank-account-kata-java'
-    version = '1.0.0'
+    archiveBaseName = 'bank-account-kata-java'
+    archiveVersion = '1.0.0'
 }
 
 test {
@@ -15,6 +15,12 @@ dependencies {
             libs.test.assertj,
             libs.test.mockito
 
-    testRuntimeOnly libs.test.junitEngine
+    testRuntimeOnly libs.test.junitEngine,
+            libs.test.junitPlatform
 
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }

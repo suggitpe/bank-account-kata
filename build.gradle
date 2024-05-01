@@ -1,29 +1,24 @@
-allprojects { projects ->
+buildscript {
+    apply from: "$rootDir/dependencies.gradle"
 
-    defaultTasks 'clean', 'build'
-
-    buildscript {
-        ext {
-            kotlinVersion = '1.3.21'
-        }
-        repositories {
-            jcenter()
-        }
-        dependencies {
-            classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
-        }
+    repositories {
+        mavenCentral()
     }
-
+    dependencies {
+        classpath gradlePlugins.kotlin
+    }
 }
 
-subprojects { subprojects ->
+allprojects {
+    defaultTasks 'clean', 'build'
+}
 
+subprojects {
     apply from: "$rootDir/dependencies.gradle"
 
     group = "org.acmebank.katas.bankaccount"
 
     repositories {
-        jcenter()
+        mavenCentral()
     }
-
 }

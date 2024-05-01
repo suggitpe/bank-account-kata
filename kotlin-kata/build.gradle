@@ -1,8 +1,10 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 apply plugin: 'kotlin'
 
 jar {
-    baseName = 'bank-account-kata-kotlin'
-    version = '1.0.0'
+    archiveBaseName = 'bank-account-kata-kotlin'
+    archiveVersion = '1.0.0'
 }
 
 test {
@@ -10,10 +12,23 @@ test {
 }
 
 dependencies {
-    compile libs.kotlin
+    implementation libs.kotlin
 
     testImplementation libs.test.junitApi,
-            libs.test.assertj
+            libs.test.kotestAssertions
 
-    testRuntimeOnly libs.test.junitEngine
+    testRuntimeOnly libs.test.junitEngine,
+            libs.test.junitPlatform
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+compileKotlin {
+    compilerOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = JvmTarget.JVM_17
+    }
 }
