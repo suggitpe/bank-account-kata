@@ -15,11 +15,34 @@ allprojects {
 
 subprojects {
     apply from: "$rootDir/dependencies.gradle"
+    apply plugin: 'java'
     apply plugin: 'jacoco'
 
     group = "org.acmebank.katas.bankaccount"
 
     repositories {
         mavenCentral()
+    }
+
+    test {
+        useJUnitPlatform()
+
+        finalizedBy jacocoTestReport
+
+        testLogging {
+            afterSuite { desc, result ->
+                if (!desc.parent) {
+                    new File(buildDir, "test-results.json").text =
+                            "{\n" +
+                                    "\"result\": \"${result.resultType}\", \n" +
+                                    "\"tests\": \"${result.testCount}\", \n" +
+                                    "\"passed\": \"${result.successfulTestCount}\", \n" +
+                                    "\"failed\": \"${result.failedTestCount}\", \n" +
+                                    "\"skipped\": \"${result.skippedTestCount}\"\n" +
+                                    "}"
+                }
+
+            }
+        }
     }
 }

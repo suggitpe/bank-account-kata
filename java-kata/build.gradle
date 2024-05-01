@@ -1,12 +1,6 @@
-apply plugin: 'java'
-
 jar {
     archiveBaseName = 'bank-account-kata-java'
     archiveVersion = '1.0.0'
-}
-
-test {
-    useJUnitPlatform()
 }
 
 dependencies {
