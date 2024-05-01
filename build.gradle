@@ -10,11 +10,12 @@ buildscript {
 }
 
 allprojects {
-    defaultTasks 'clean', 'build'
+    defaultTasks 'clean', 'build', 'jacocoTestReport'
 }
 
 subprojects {
     apply from: "$rootDir/dependencies.gradle"
+    apply plugin: 'jacoco'
 
     group = "org.acmebank.katas.bankaccount"
 
