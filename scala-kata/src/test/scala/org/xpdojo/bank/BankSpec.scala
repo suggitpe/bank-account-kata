@@ -1,8 +1,8 @@
 package org.xpdojo.bank
 
-import org.scalatest._
+import org.scalatest.flatspec.AnyFlatSpec
 
-class BankSpec extends FlatSpec {
+class BankSpec extends AnyFlatSpec {
 
   "With an account we" can "deposit an amount to increase the balance" in {
   }

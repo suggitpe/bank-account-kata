@@ -8,10 +8,25 @@ jar {
 dependencies {
     implementation libs.scala
 
-    testImplementation libs.test.scalatest
+    testImplementation libs.test.scalatest,
+            libs.test.junitPlatform
+
+    testRuntimeOnly libs.test.junitEngine,
+            libs.test.scalatestJunit
+
+
 }
 
-scala {
+//test {
+//    useJUnitPlatform {
+//        includeEngines 'scalatest'
+//        testLogging {
+//            events("passed", "skipped", "failed", "standard_error")
+//        }
+//    }
+//}
+
+java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
