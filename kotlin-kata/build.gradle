@@ -28,3 +28,11 @@ compileKotlin {
         jvmTarget = JvmTarget.JVM_17
     }
 }
+
+compileTestKotlin {
+    compilerOptions {
+        freeCompilerArgs = ["-Xjsr305=strict"]
+        jvmTarget = JvmTarget.JVM_17
+    }
+}
+
