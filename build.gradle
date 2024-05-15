@@ -42,7 +42,7 @@ subprojects {
         testLogging {
             afterSuite { desc, result ->
                 if (!desc.parent) {
-                    new File(buildDir, "test-results.json").text =
+                    new File(layout.buildDirectory.get().asFile, "/jacoco/test-results.json").text =
                             "{\n" +
                                     "\"result\": \"${result.resultType}\", \n" +
                                     "\"tests\": \"${result.testCount}\", \n" +
