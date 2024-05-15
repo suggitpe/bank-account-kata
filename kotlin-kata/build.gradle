@@ -4,7 +4,6 @@ apply plugin: 'kotlin'
 
 jar {
     archiveBaseName = 'bank-account-kata-kotlin'
-    archiveVersion = '1.0.0'
 }
 
 dependencies {
