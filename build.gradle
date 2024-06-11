@@ -7,7 +7,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath gradlePlugins.kotlin
+        classpath gradlePlugins.kotlin,
+                gradlePlugins.pitest
     }
 }
 
@@ -16,13 +17,14 @@ static def buildTimeStamp() {
 }
 
 allprojects {
-    defaultTasks 'clean', 'build', 'jacocoTestReport'
+    defaultTasks 'clean', 'build', 'pitest'
 }
 
 subprojects {
     apply from: "$rootDir/dependencies.gradle"
     apply plugin: 'java'
     apply plugin: 'jacoco'
+    apply plugin: "info.solidsoft.pitest"
 
     group = "org.acmebank.katas.bankaccount"
 
@@ -30,8 +32,14 @@ subprojects {
         mavenCentral()
     }
 
-    jar{
+    jar {
         archiveVersion = "${buildTimeStamp()}"
+    }
+
+    pitest{
+        threads = 4
+        junit5PluginVersion = '1.0.0'
+        failWhenNoMutations = false
     }
 
     test {

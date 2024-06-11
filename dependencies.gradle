@@ -3,7 +3,8 @@ ext {
     kotlinVersion = '1.9.23'
 
     gradlePlugins = [
-            kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}"
+            kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}",
+            pitest: "info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.15.0"
     ]
 
     libs = [
