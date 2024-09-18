@@ -1,5 +1,6 @@
 package org.xpdojo.bank;
 
+import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +45,23 @@ public class Account {
         destinationAccount.deposit(money);
         this.withdraw(money);
     }
+
+    public TransferObject transfer(Money money) {
+        return new TransferObject(money);
+    }
+
+    class TransferObject {
+        private final Money money;
+        public TransferObject(Money money) {
+            this.money = money;
+        }
+
+        public void to(Account destinationAccount) {
+            destinationAccount.deposit(money);
+            Account.this.withdraw(money);
+        }
+    }
+
 
     public void printBalanceStatement() {
         statementWriter.printBalanceOf(balance());
