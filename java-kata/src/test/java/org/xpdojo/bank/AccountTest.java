@@ -11,6 +11,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.xpdojo.bank.Account.accountWithEmptyBalance;
 import static org.xpdojo.bank.Account.accountWithOpeningBalance;
 import static org.xpdojo.bank.Money.amountOf;
 
@@ -64,7 +65,7 @@ public class AccountTest {
 
     @Test
     public void balancesCorrectlyAfterNumberOfTransactions() {
-        var account = Account.accountWithEmptyBalance();
+        var account = accountWithEmptyBalance();
         account.deposit(amountOf(10.0));
         account.deposit(amountOf(15.0));
         account.deposit(amountOf(25.0));
