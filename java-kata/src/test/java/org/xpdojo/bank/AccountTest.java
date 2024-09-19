@@ -2,13 +2,24 @@ package org.xpdojo.bank;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.xpdojo.bank.Account.accountWithOpeningBalance;
 import static org.xpdojo.bank.Money.amountOf;
 
 @DisplayName("With an account we can ...")
+@ExtendWith(MockitoExtension.class)
 public class AccountTest {
+
+    @Mock
+    private StatementWriter statementWriter;
 
     @Test
     public void depositAnAmountToIncreaseTheBalance() {
@@ -50,4 +61,32 @@ public class AccountTest {
             senderAccount.transfer(amountOf(50.0)).to(accountWithOpeningBalance(amountOf(0.0)));
         });
     }
+
+    @Test
+    public void balancesCorrectlyAfterNumberOfTransactions() {
+        var account = Account.accountWithEmptyBalance();
+        account.deposit(amountOf(10.0));
+        account.deposit(amountOf(15.0));
+        account.deposit(amountOf(25.0));
+        account.deposit(amountOf(35.0));
+        account.withdraw(amountOf(15.0));
+        account.withdraw(amountOf(25.0));
+        assertThat(account.balance()).isEqualTo(amountOf(45.0));
+    }
+
+    @Test
+    public void printOutAccountBalanceSlips() {
+        var account = accountWithOpeningBalance(amountOf(100.0));
+        account.printBalanceSlipTo(statementWriter);
+        verify(statementWriter).printBalanceSlipFrom(any(Account.class));
+    }
+
+    @Test
+    public void printOutAccountActivityStatements() {
+        var account = accountWithOpeningBalance(amountOf(100.0));
+        account.printActivityStatementTo(statementWriter);
+        verify(statementWriter).printActivityStatementFor(any(Account.class));
+    }
+
+
 }

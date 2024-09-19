@@ -13,11 +13,16 @@ ext {
             kotlin       : "org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}",
             kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}",
 
+            slf4j        : 'org.slf4j:slf4j-api:2.0.7',
+            logback      : 'ch.qos.logback:logback-classic:1.4.8',
+
+
             test         : [
                     junitApi        : 'org.junit.jupiter:junit-jupiter-api:5.10.2',
                     junitEngine     : 'org.junit.jupiter:junit-jupiter-engine:5.10.2',
                     junitPlatform   : 'org.junit.platform:junit-platform-launcher:1.10.2',
-                    mockito         : 'org.mockito:mockito-core:5.11.0',
+                    mockito         : 'org.mockito:mockito-core:5.13.0',
+                    mockitoJunit    : "org.mockito:mockito-junit-jupiter:5.13.0",
                     assertj         : 'org.assertj:assertj-core:3.25.3',
                     kotestAssertions: 'io.kotest:kotest-assertions-core:5.8.1',
                     scalatest       : 'org.scalatest:scalatest_2.13:3.2.18',

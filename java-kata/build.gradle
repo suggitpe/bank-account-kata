@@ -4,12 +4,16 @@ jar {
 
 dependencies {
 
+    implementation libs.slf4j
+
     testImplementation libs.test.junitApi,
             libs.test.assertj,
-            libs.test.mockito
+            libs.test.mockito,
+            libs.test.mockitoJunit
 
     testRuntimeOnly libs.test.junitEngine,
-            libs.test.junitPlatform
+            libs.test.junitPlatform,
+            libs.logback
 
 }
 
