@@ -1,3 +1,12 @@
 package org.xpdojo.bank
 
-data class Money(val amount: Double)
+data class Money private constructor(private val amount: Double) {
+
+    companion object{
+        fun amountOf(amount: Double) = Money(amount)
+    }
+
+    infix fun add(toAdd: Money): Money {
+        return Money(amount + toAdd.amount)
+    }
+}
