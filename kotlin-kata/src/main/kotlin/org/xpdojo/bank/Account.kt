@@ -9,4 +9,8 @@ class Account private constructor(var balance: Money) {
     fun deposit(amount: Money) {
         balance = balance add amount
     }
+
+    fun withdraw(amount: Money) {
+        balance = balance less amount
+    }
 }

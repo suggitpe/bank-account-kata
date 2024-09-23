@@ -12,4 +12,9 @@ class MoneyTest {
     fun `add two monies to create a new money`() {
         (amountOf(12.0) add amountOf(34.0)) shouldBe amountOf(46.0)
     }
+
+    @Test
+    fun `reduce money by another ammount`(){
+        (amountOf(23.0) less amountOf(5.0)) shouldBe amountOf(18.0)
+    }
 }

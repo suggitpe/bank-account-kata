@@ -15,4 +15,11 @@ class AccountTest {
         account.deposit(amountOf(4.0))
         account.balance shouldBe amountOf(14.0)
     }
+
+    @Test
+    fun `withdraw an amount to decrease the balance`() {
+        val account = accountWithOpeningBalanceOf(amountOf(100.0))
+        account.withdraw(amountOf(23.0))
+        account.balance shouldBe amountOf(77.0)
+    }
 }
