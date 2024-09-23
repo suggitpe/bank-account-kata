@@ -42,6 +42,7 @@ public class Account {
         transactions.add(aDebitOf(amount, now()));
     }
 
+    // returns an inner helper class ... allows a more fluid DSL to emerge
     public TransferHelper transfer(final Money money) {
         return new TransferHelper(money);
     }

@@ -25,6 +25,18 @@ public class Money {
         return new Money(value - amount.value);
     }
 
+    public boolean isGreaterThan(Money balance) {
+        return value > balance.value;
+    }
+
+    public String amount() {
+        return String.valueOf(value);
+    }
+
+    public Money negative() {
+        return new Money(value * -1);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -41,17 +53,5 @@ public class Money {
     @Override
     public String toString() {
         return "Money{value=" + value + '}';
-    }
-
-    public String amount() {
-        return String.valueOf(value);
-    }
-
-    public boolean isGreaterThan(Money balance) {
-        return value > balance.value;
-    }
-
-    public Money negative() {
-        return new Money(value * -1);
     }
 }
