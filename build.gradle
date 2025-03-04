@@ -40,6 +40,7 @@ subprojects {
         threads = 4
         junit5PluginVersion = '1.2.1'
         failWhenNoMutations = false
+        excludedMethods = ['toString', 'hashCode', 'equals']
     }
 
     test {
