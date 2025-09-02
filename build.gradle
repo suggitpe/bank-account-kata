@@ -12,6 +12,22 @@ buildscript {
     }
 }
 
+static def gitSha() {
+    try {
+        return 'git rev-parse --short HEAD'.execute().text.trim()
+    } catch (ignored) {
+        return "unknown"
+    }
+}
+
+static def gitBranch() {
+    try {
+        return 'git rev-parse --abbrev-ref HEAD'.execute().text.trim()
+    } catch (ignored) {
+        return "unknown"
+    }
+}
+
 static def buildTimeStamp() {
     return new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date())
 }
@@ -33,7 +49,7 @@ subprojects {
     }
 
     jar {
-        archiveVersion = "${buildTimeStamp()}"
+        archiveVersion = "${gitBranch()}-${gitSha()}-${buildTimeStamp()}"
     }
 
     pitest{
