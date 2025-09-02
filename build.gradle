@@ -49,7 +49,7 @@ subprojects {
     }
 
     jar {
-        archiveVersion = "${gitBranch()}-${gitSha()}-${buildTimeStamp()}"
+        archiveVersion = "${gitSha()}-${buildTimeStamp()}"
     }
 
     pitest{
