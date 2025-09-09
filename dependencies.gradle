@@ -1,6 +1,6 @@
 ext {
 
-    kotlinVersion = '2.0.21'
+    kotlinVersion = '2.2.10'
 
     gradlePlugins = [
             kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}",
@@ -14,12 +14,12 @@ ext {
             kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:${kotlinVersion}",
 
             test         : [
-                    junitApi        : 'org.junit.jupiter:junit-jupiter-api:5.12.0',
-                    junitEngine     : 'org.junit.jupiter:junit-jupiter-engine:5.12.0',
-                    junitPlatform   : 'org.junit.platform:junit-platform-launcher:1.12.0',
-                    mockito         : 'org.mockito:mockito-core:5.15.2',
-                    assertj         : 'org.assertj:assertj-core:3.27.3',
-                    kotestAssertions: 'io.kotest:kotest-assertions-core:5.9.1',
+                    junitApi        : 'org.junit.jupiter:junit-jupiter-api:5.13.4',
+                    junitEngine     : 'org.junit.jupiter:junit-jupiter-engine:5.13.4',
+                    junitPlatform   : 'org.junit.platform:junit-platform-launcher:1.13.4',
+                    mockito         : 'org.mockito:mockito-core:5.19.0',
+                    assertj         : 'org.assertj:assertj-core:3.27.4',
+                    kotestAssertions: 'io.kotest:kotest-assertions-core:6.0.1',
                     scalatest       : 'org.scalatest:scalatest_2.13:3.2.18',
                     scalatestJunit  : 'org.scalatestplus:junit-5-10_2.13:3.2.18.0'
             ]
